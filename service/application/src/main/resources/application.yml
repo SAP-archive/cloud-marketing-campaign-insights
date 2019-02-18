@@ -1,0 +1,9 @@
+logging:
+  level:
+    com.sap.cec.mkt.insight: DEBUG
+    com.sap.cloud.sdk: INFO
+#    org.apache.http.wire: DEBUG
+    root: WARN
+
+server:
+  port: 8080

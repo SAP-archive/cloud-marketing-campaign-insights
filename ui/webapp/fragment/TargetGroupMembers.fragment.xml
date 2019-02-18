@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<Table id="tableTargetGroupMembers" growing="true" growingThreshold="20"  busy="true"
+		 growingScrollToLoad="true">
+		<headerToolbar>
+			<Toolbar>
+				<Title id="titleTGMembers" text="{objectView>/targetGroupMemberTableTitle}"></Title>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			<Column minScreenWidth="Desktop" demandPopin="true">
+				<Text text="{i18n>objectPage.contacts.name}"/>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true">
+				<Text text="{i18n>objectPage.contacts.email}"/>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true">
+				<Text text="{i18n>objectPage.contacts.phone}"/>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true">
+				<Text text="{i18n>sales_representative_employee}"/>
+			</Column>
+		</columns>
+	</Table>
+</core:FragmentDefinition>

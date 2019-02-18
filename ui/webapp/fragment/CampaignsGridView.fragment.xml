@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form">
+	<FlexBox id="mktInsightGridView" visible="{worklistView>/displayBlockView}" class="sapUiTinyMargin widthOfFlex" width="100%">
+		<l:Grid id="campaignGrids"
+			content="{path: '/CampaignsByTeamMember', filters: [ { path: 'CampaignCategory', operator: 'EQ', value1: 'CME'}, { path: 'CampaignLifecycleStatus', operator: 'EQ', value1: '01', and : 'false'}, { path: 'CampaignLifecycleStatus', operator: 'EQ', value1: '02', and : 'false'}, { path: 'CampaignLifecycleStatus', operator: 'EQ', value1: '03', and : 'false'}], events : { dataReceived : '.onBindingDataReceived', dataRequested : '.onBindingDataRequested' } }"
+			containerQuery="true" width="100%" defaultSpan="XL3 L4 M6 S12">
+			<CustomListItem press="onTitleClicked" type="Active">
+				<l:HorizontalLayout>
+					<core:Icon size="3rem" src="sap-icon://marketing-campaign" class="sapUiSmallMarginBegin sapUiSmallMarginTop" color="#346187"/>
+					<Text text="{CampaignName}" tooltip="{CampaignName}" class="sapUiSmallMarginTop sapUiSmallMarginBegin textFontSize"/>
+				</l:HorizontalLayout>
+				<form:SimpleForm layout="ResponsiveGridLayout" editable="false" adjustLabelSpan="false" labelSpanXL="2" labelSpanL="2" labelSpanM="3"
+					labelSpanS="4" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" columnsS="1"
+					class="sapUiNoMarginTop">
+					<form:content>
+						<Label text="{i18n>id}" tooltip="{i18n>id}"/>
+						<Text text="{CampaignID}" tooltip="{CampaignID}"/>
+						<Label text="{i18n>category}" tooltip="{i18n>category}"/>
+						<Text text="{CampaignCategoryName}" tooltip="{CampaignCategoryName}"/>
+						<Label text="{i18n>owner}" tooltip="{i18n>owner}"/>
+						<Text text="{parts: ['CampaignOwnerName', 'CampaignOwner'] , formatter: '.formatter.teamMemberName' }"
+							tooltip="{parts: ['CampaignOwnerName', 'CampaignOwner'] , formatter: '.formatter.teamMemberName' }"/>
+						<Label text="{i18n>startDate}" tooltip="{i18n>startDate}"/>
+						<Text text="{path:'CampaignStartDate', formatter: '.formatter.convertToDateTimeObject' }"
+							tooltip="{path:'CampaignStartDate', formatter: '.formatter.convertToDateTimeObject' }"/>
+						<Label text="{i18n>endDate}" tooltip="{i18n>endDate}"/>
+						<Text text="{path:'CampaignEndDate', formatter: '.formatter.convertToDateTimeObject' }"
+							tooltip="{path:'CampaignEndDate', formatter: '.formatter.convertToDateTimeObject' }"/>
+					</form:content>
+				</form:SimpleForm>
+				<layoutData>
+					<l:GridData span="XL3 L4 M6 S12"/>
+				</layoutData>
+			</CustomListItem>
+		</l:Grid>
+		<Text class="noDataMessage" textAlign="Center" text="{i18n>No_Campaigns_Found}"
+			visible="{= (${worklistView>/displayBlockView} &amp;&amp; ${worklistView>/AllCampaignsCount} === '0' &amp;&amp; ${worklistView>/selectedCampaignTypeKey} === '0') ? true : false }"/>
+		<Text class="noDataMessage" textAlign="Center" text="{i18n>No_Campaigns_Found}"
+			visible="{= (${worklistView>/displayBlockView} &amp;&amp; ${worklistView>/InPreparationCampaignsCount} === '0' &amp;&amp; ${worklistView>/selectedCampaignTypeKey} === '1') ? true : false }"/>
+		<Text class="noDataMessage" textAlign="Center" text="{i18n>No_Campaigns_Found}"
+			visible="{= (${worklistView>/displayBlockView} &amp;&amp; ${worklistView>/ReleasedCampaignsCount} === '0' &amp;&amp; ${worklistView>/selectedCampaignTypeKey} === '2') ? true : false }"/>
+		<Text class="noDataMessage" textAlign="Center" text="{i18n>No_Campaigns_Found}"
+			visible="{= (${worklistView>/displayBlockView} &amp;&amp; ${worklistView>/CompletedCampaignsCount} === '0' &amp;&amp; ${worklistView>/selectedCampaignTypeKey} === '3') ? true : false }"/>
+	</FlexBox>
+</core:FragmentDefinition>

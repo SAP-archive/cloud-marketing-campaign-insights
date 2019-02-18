@@ -1,0 +1,55 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:ui="sap.ui.table" xmlns:fb="sap.ui.comp.filterbar">
+	<FlexBox id="mktInsightTableView" wrap="Wrap" justifyContent="Start" alignItems="Start" class="sapUiTinyMargin"
+		visible="{worklistView>/displayGroupItemView}">
+		<Table id="table_campaigns" growing="true" updateFinished="onTableUpdateFinished" growingThreshold="20"
+			items=
+			"{path: '/CampaignsByTeamMember',sorter: [{path: 'CampaignLifecycleStatus', descending:'false'}],
+				filters: [ 
+			{ path: 'CampaignCategory', operator: 'EQ', value1: 'CME'}, 
+			{ path: 'CampaignLifecycleStatus', operator: 'EQ', value1: '01', and : 'false'}, 
+			{ path: 'CampaignLifecycleStatus', operator: 'EQ', value1: '02', and : 'false'}, 
+			{ path: 'CampaignLifecycleStatus', operator: 'EQ', value1: '03', and : 'false'}] }">
+			<columns>
+				<Column width="25%" minScreenWidth="Desktop" demandPopin="true">
+					<Text text="{i18n>name}"/>
+				</Column>
+				<Column width="5%" minScreenWidth="Desktop" demandPopin="true">
+					<Text text="{i18n>id}"/>
+				</Column>
+				<Column width="20%" minScreenWidth="Desktop" demandPopin="true">
+					<Text text="{i18n>owner}"/>
+				</Column>
+				<Column width="auto" minScreenWidth="Desktop" demandPopin="true">
+					<Text text="{i18n>startDate}"/>
+				</Column>
+				<Column width="auto" minScreenWidth="Desktop" demandPopin="true">
+					<Text text="{i18n>endDate}"/>
+				</Column>
+				<Column width="auto" minScreenWidth="Desktop" demandPopin="true">
+					<Text text="{i18n>status}"/>
+				</Column>
+				<Column width="15%" minScreenWidth="Desktop" demandPopin="true">
+					<Text text="{i18n>category}"/>
+				</Column>
+				<Column width="auto" minScreenWidth="Desktop" demandPopin="true">
+					<Text text="{i18n>marketingArea}"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem type="Navigation" press="onTitleClicked">
+					<cells>
+						<ObjectIdentifier title="{CampaignName}"/>
+						<Text text="{path:'CampaignID'}"/>
+						<Text text="{parts: ['CampaignOwnerName', 'CampaignOwner'] , formatter: '.formatter.teamMemberName' }"/>
+						<Text text="{path:'CampaignStartDate', formatter: '.formatter.convertToDateTimeObject'}"/>
+						<Text text="{path:'CampaignEndDate', formatter: '.formatter.convertToDateTimeObject'}"/>
+						<ObjectStatus text="{CampaignLifecycleStatusName}" state="{path : 'CampaignLifecycleStatus', formatter: '.formatter.getState'}"/>
+						<Text text="{CampaignCategoryName}"/>
+						<Text text="{MarketingAreaName}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</FlexBox>
+</core:FragmentDefinition>

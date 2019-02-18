@@ -1,0 +1,143 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" xmlns:microchart="sap.suite.ui.microchart">
+	<Panel height="30rem">
+		<HBox id="kpiChartView_hbox">
+			<items>
+				<Table>
+					<columns>
+						<Column></Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<microchart:ComparisonMicroChart size="M" width="100%" height="100%" minValue="0" maxValue="{KPIModel>/NumberOfSentMessages}">
+								<microchart:data>
+									<microchart:ComparisonMicroChartData title="{i18n>objectPage.overview.successMetrics.sent}" value="{KPIModel>/NumberOfSentMessages}"
+										color="Good"/>
+								</microchart:data>
+							</microchart:ComparisonMicroChart>
+						</ColumnListItem>
+						<ColumnListItem>
+							<microchart:ComparisonMicroChart size="M" width="100%" height="100%" minValue="0" maxValue="{KPIModel>/NumberOfSentMessages}">
+								<microchart:data>
+									<microchart:ComparisonMicroChartData title="{i18n>objectPage.overview.successMetrics.delivered}"
+										value="{KPIModel>/NumberOfDeliveredEmailMessages}" color="Good"/>
+								</microchart:data>
+							</microchart:ComparisonMicroChart>
+						</ColumnListItem>
+						<ColumnListItem>
+							<microchart:ComparisonMicroChart size="M" width="100%" height="100%" minValue="0" maxValue="{KPIModel>/NumberOfSentMessages}">
+								<microchart:data>
+									<microchart:ComparisonMicroChartData title="{i18n>objectPage.overview.successMetrics.unopened}" value="{KPIModel>/NumberOfUnopenedMessages}"
+										color="Good"/>
+								</microchart:data>
+							</microchart:ComparisonMicroChart>
+						</ColumnListItem>
+						<ColumnListItem>
+							<microchart:ComparisonMicroChart size="M" width="100%" height="100%" minValue="0" maxValue="{KPIModel>/NumberOfSentMessages}">
+								<microchart:data>
+									<microchart:ComparisonMicroChartData title="{i18n>objectPage.overview.successMetrics.opened}" value="{KPIModel>/NumberOfOpenedMessages}"
+										color="Good"/>
+								</microchart:data>
+							</microchart:ComparisonMicroChart>
+						</ColumnListItem>
+						<ColumnListItem>
+							<microchart:ComparisonMicroChart scale="%" size="M" width="100%" height="100%" minValue="0" maxValue="100">
+								<microchart:data>
+									<microchart:ComparisonMicroChartData title="{i18n>objectPage.overview.successMetrics.rateOfOpenedMessages}"
+										value="{KPIModel>/OpenedMessageRateInPercent}" color="Good"/>
+								</microchart:data>
+							</microchart:ComparisonMicroChart>
+						</ColumnListItem>
+						<ColumnListItem>
+							<microchart:ComparisonMicroChart size="M" width="100%" height="100%" minValue="0" maxValue="{KPIModel>/NumberOfSentMessages}">
+								<microchart:data>
+									<microchart:ComparisonMicroChartData title="{i18n>objectPage.overview.successMetrics.uniqueClicks}" value="{KPIModel>/NumberOfUniqueClicks}"
+										color="Good"/>
+								</microchart:data>
+							</microchart:ComparisonMicroChart>
+						</ColumnListItem>
+						<ColumnListItem>
+							<microchart:ComparisonMicroChart scale="%" size="M" width="100%" height="100%" minValue="0" maxValue="100">
+								<microchart:data>
+									<microchart:ComparisonMicroChartData title="{i18n>objectPage.overview.successMetrics.rateOfClickToOpen}"
+										value="{KPIModel>/ClickToOpenRateInPercent}" color="Good"/>
+								</microchart:data>
+							</microchart:ComparisonMicroChart>
+						</ColumnListItem>
+						<ColumnListItem>
+							<microchart:ComparisonMicroChart scale="%" size="M" width="100%" height="100%" minValue="0" maxValue="100">
+								<microchart:data>
+									<microchart:ComparisonMicroChartData title="{i18n>objectPage.overview.successMetrics.rateOfUniqueClick}"
+										value="{KPIModel>/UniqueClickRateInPercent}" color="Good"/>
+								</microchart:data>
+							</microchart:ComparisonMicroChart>
+						</ColumnListItem>
+					</items>
+				</Table>
+				<Table>
+					<columns>
+						<Column></Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<microchart:ComparisonMicroChart size="M" width="100%" height="100%" minValue="0" maxValue="{KPIModel>/NumberOfSentMessages}">
+								<microchart:data>
+									<microchart:ComparisonMicroChartData title="{i18n>objectPage.overview.successMetrics.bounces}" value="{KPIModel>/NumberOfBounces}"
+										color="Error"/>
+								</microchart:data>
+							</microchart:ComparisonMicroChart>
+						</ColumnListItem>
+						<ColumnListItem>
+							<microchart:ComparisonMicroChart size="M" width="100%" height="100%" minValue="0" maxValue="{KPIModel>/NumberOfSentMessages}">
+								<microchart:data>
+									<microchart:ComparisonMicroChartData title="{i18n>objectPage.overview.successMetrics.hardBounces}" value="{KPIModel>/NumberOfHardBounces}"
+										color="Error"/>
+								</microchart:data>
+							</microchart:ComparisonMicroChart>
+						</ColumnListItem>
+						<ColumnListItem>
+							<microchart:ComparisonMicroChart size="M" width="100%" height="100%" minValue="0" maxValue="{KPIModel>/NumberOfSentMessages}">
+								<microchart:data>
+									<microchart:ComparisonMicroChartData title="{i18n>objectPage.overview.successMetrics.softBounces}" value="{KPIModel>/NumberOfSoftBounces}"
+										color="Error"/>
+								</microchart:data>
+							</microchart:ComparisonMicroChart>
+						</ColumnListItem>
+						<ColumnListItem>
+							<microchart:ComparisonMicroChart scale="%" size="M" width="100%" height="100%" minValue="0" maxValue="100">
+								<microchart:data>
+									<microchart:ComparisonMicroChartData title="{i18n>objectPage.overview.successMetrics.bounceRate}" value="{KPIModel>/BounceRateInPercent}"
+										color="Error"/>
+								</microchart:data>
+							</microchart:ComparisonMicroChart>
+						</ColumnListItem>
+						<ColumnListItem>
+							<microchart:ComparisonMicroChart size="M" width="100%" height="100%" minValue="0" maxValue="{KPIModel>/NumberOfSentMessages}">
+								<microchart:data>
+									<microchart:ComparisonMicroChartData title="{i18n>objectPage.overview.successMetrics.missingMarketingPermissions}"
+										value="{ path: 'KPIModel>/NmbrOfMisgMarketingPermissions', formatter: '.formatter.formatKPIData' }" color="Error"/>
+								</microchart:data>
+							</microchart:ComparisonMicroChart>
+						</ColumnListItem>
+						<ColumnListItem>
+							<microchart:ComparisonMicroChart size="M" width="100%" height="100%" minValue="0" maxValue="{KPIModel>/NumberOfSentMessages}">
+								<microchart:data>
+									<microchart:ComparisonMicroChartData title="{i18n>objectPage.overview.successMetrics.missingCommunicationData}"
+										value="{KPIModel>/NumberOfMissingCommData}" color="Error"/>
+								</microchart:data>
+							</microchart:ComparisonMicroChart>
+						</ColumnListItem>
+						<ColumnListItem>
+							<microchart:ComparisonMicroChart size="M" width="100%" height="100%" minValue="0" maxValue="{KPIModel>/NumberOfSentMessages}">
+								<microchart:data>
+									<microchart:ComparisonMicroChartData title="{i18n>objectPage.overview.successMetrics.limitReached}"
+										value="{path: 'KPIModel>/NumberOfLimitReached', formatter: '.formatter.formatKPIData' }" color="Error"/>
+								</microchart:data>
+							</microchart:ComparisonMicroChart>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</items>
+		</HBox>
+	</Panel>
+</core:FragmentDefinition>

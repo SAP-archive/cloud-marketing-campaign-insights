@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<name>Marketing Insight - Application</name>
+	<artifactId>marketing-insight-application</artifactId>
+	<packaging>war</packaging>
+
+	<parent>
+		<groupId>com.sap.cec.mkt</groupId>
+		<artifactId>marketing-insight</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<properties>
+		<cxs.version>1.17.1</cxs.version>
+	</properties>
+
+	<profiles>
+		<!-- neo profile -->
+		<profile>
+			<id>neo</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.sap.cloud.s4hana.cloudplatform</groupId>
+					<artifactId>scp-neo</artifactId>
+				</dependency>
+			</dependencies>
+
+		</profile>
+		
+		<!-- CF profile -->
+		<profile>
+			<id>cf</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.sap.cloud.s4hana.cloudplatform</groupId>
+					<artifactId>scp-cf</artifactId>
+				</dependency>
+				
+				<!-- for local development -->
+				<dependency>
+					<groupId>org.apache.derby</groupId>
+					<artifactId>derby</artifactId>
+					<scope>runtime</scope>
+				</dependency>
+				
+				<!-- logging -->
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+
+	<dependencies>
+		<!-- SDK dependencies -->
+
+		<dependency>
+			<groupId>com.sap.cloud.s4hana</groupId>
+			<artifactId>s4hana-all</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.cloud.s4hana.frameworks</groupId>
+			<artifactId>cxf</artifactId>
+		</dependency>
+
+		<!-- Spring dependencies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.tomcat.embed</groupId>
+					<artifactId>tomcat-embed-websocket</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.tomcat.embed</groupId>
+					<artifactId>tomcat-embed-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-actuator</artifactId>
+		</dependency>
+			
+		<!-- OData provisioning dependencies -->
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk.prov</groupId>
+			<artifactId>odata4.web</artifactId>
+			<version>${cxs.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-server-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-server-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-commons-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-commons-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk.prov</groupId>
+			<artifactId>custom-dataprovider</artifactId>
+			<version>${cxs.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk.prov</groupId>
+			<artifactId>odatav4-prov</artifactId>
+			<version>${cxs.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-server-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-server-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-commons-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-commons-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk.prov</groupId>
+			<artifactId>api</artifactId>
+			<version>${cxs.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk.prov</groupId>
+			<artifactId>odata4.api</artifactId>
+			<version>${cxs.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-server-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-server-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-commons-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-commons-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk.prov</groupId>
+			<artifactId>odata4.core</artifactId>
+			<version>${cxs.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-server-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-server-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-commons-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-commons-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk.prov</groupId>
+			<artifactId>odata4.cds</artifactId>
+			<version>${cxs.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-server-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-server-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-commons-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-commons-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk.prov</groupId>
+			<artifactId>odata4.cdx</artifactId>
+			<version>${cxs.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-client-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.olingo</groupId>
+					<artifactId>odata-client-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk.prov</groupId>
+			<artifactId>odata4.xsa</artifactId>
+			<version>${cxs.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk.prov</groupId>
+			<artifactId>annotation-processor</artifactId>
+			<version>${cxs.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.olingo</groupId>
+			<artifactId>olingo-odata2-core</artifactId>
+			<version>2.0.8-sap-08</version>
+		</dependency>
+		
+		<!-- Lombok dependency -->
+		<!-- <dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency> -->
+		
+		<!-- scope "test" -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- java servlet API -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-releases</id>
+			<name>Spring Releases</name>
+			<url>https://repo.spring.io/libs-release</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<build>
+	    <finalName>marketing-insight-application</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.0.3.RELEASE</version>
+				<configuration>
+					<attach>false</attach>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<annotationProcessors>
+						<annotationProcessor>
+							com.sap.cloud.sdk.service.annotationprocessor.AnnotationProcessor
+						</annotationProcessor>
+					</annotationProcessors>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.8</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>false</downloadJavadocs>
+					<wtpversion>2.0</wtpversion>
+
+					<additionalConfig>
+						<!-- Enable annotation processing in Eclipse -->
+						<file>
+							<name>.factorypath</name>
+							<content>
+								<![CDATA[<factorypath><factorypathentry
+										kind="VARJAR" id="M2_REPO/com/sap/cloud/sdk/service/prov/annotation-processor/${cxs.version}/annotation-processor-${cxs.version}.jar"
+										enabled="true" runInBatchMode="false"/></factorypath>
+								 ]]>
+							</content>
+						</file>
+
+						<file>
+							<name>.settings/org.eclipse.jdt.core.prefs</name>
+							<content>
+								<![CDATA[
+									eclipse.preferences.version=1
+									org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8
+									org.eclipse.jdt.core.compiler.compliance=1.8
+									org.eclipse.jdt.core.compiler.processAnnotations=enabled
+									org.eclipse.jdt.core.compiler.source=1.8
+								 ]]>
+							</content>
+						</file>
+					</additionalConfig>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

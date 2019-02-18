@@ -1,0 +1,92 @@
+.verticalLayoutSpacing {
+    padding-right: 2rem;
+}
+
+.blockLayoutSpacing {
+    padding-top: 0rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.sapUxAPBlockContainerDesktop {
+    padding: 0rem !important;
+}
+
+.addPaddingMicrochart {
+    padding-bottom: 1rem;
+}
+
+.tileLayout {
+    float: center;
+}
+
+.iframeStyle {
+    width: 19rem;
+    height: 1px;
+    border: none;
+    box-shadow: none;
+}
+
+.toolBarNoBorder .sapMPageEnableScrolling .sapMTBStandard {
+    border-bottom: none !important;
+}
+
+.noBorderIconTab .sapMPageEnableScrolling .sapMITBContainerContent .sapMITBContent {
+    border-bottom: none !important;
+}
+
+.sapMPageEnableScrolling {
+    background-color: #eff4f9 !important;
+}
+
+.sapMPageEnableScrolling .sapUiRespGridSpanL3 {
+    background-color: white !important;
+}
+
+.textFontSize {
+    font-size: 1.2rem !important;
+}
+
+.flexWidth .sapMFlexItemAlignAuto {
+    width: 100%;
+}
+
+.noDataMessage {
+    font-size: 1rem;
+}
+
+.widthOfFlex .sapMFlexBoxBGTransparent {
+    width: 100% !important;
+}
+
+
+/************************************************************************************
+ * Email carousel control
+************************************************************************************/
+
+.designcustomTileClass {
+    width: 400px;
+    height: 350px;
+    border-style: ridge;
+    border-width: 1px;
+    border-color: lightgray;
+    box-shadow: 3px 3px 2px lightgray;
+}
+
+.designcustomTileImageContClass {
+    cursor: pointer;
+    width: 335px;
+    height: 420px;
+    border-style: ridge;
+    border-width: 0px 0px 1px 0px;
+    border-color: lightgray;
+}
+
+.bigcustomTileClass {
+    width: 600px;
+    height: 700px;
+    border-style: ridge;
+    border-width: 2px;
+    border-color: lightgray;
+    box-shadow: 3px 3px 2px lightgray;
+}

@@ -1,0 +1,82 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<Panel height="30rem">
+		<content>
+			<GenericTile class="sapUiTinyMargin tileLayout" header="{i18n>objectPage.overview.successMetrics.sent}">
+				<TileContent>
+					<NumericContent value="{KPIModel>/NumberOfSentMessages}" valueColor="Good"/>
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMargin tileLayout" header="{i18n>objectPage.overview.successMetrics.delivered}">
+				<TileContent>
+					<NumericContent value="{KPIModel>/NumberOfDeliveredEmailMessages}" valueColor="Good"/>
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMargin tileLayout" header="{i18n>objectPage.overview.successMetrics.unopened}">
+				<TileContent>
+					<NumericContent value="{KPIModel>/NumberOfUnopenedMessages}" valueColor="Good"/>
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMargin tileLayout" header="{i18n>objectPage.overview.successMetrics.opened}">
+				<TileContent>
+					<NumericContent value="{KPIModel>/NumberOfOpenedMessages}" valueColor="Good"/>
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMargin tileLayout" header="{i18n>objectPage.overview.successMetrics.rateOfOpenedMessages}">
+				<TileContent >
+					<NumericContent scale="%" value="{KPIModel>/OpenedMessageRateInPercent}" valueColor="Good"/>
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMargin tileLayout" header="{i18n>objectPage.overview.successMetrics.uniqueClicks}">
+				<TileContent>
+					<NumericContent value="{KPIModel>/NumberOfUniqueClicks}" valueColor="Good"/>
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMargin tileLayout" header="{i18n>objectPage.overview.successMetrics.rateOfClickToOpen}">
+				<TileContent>
+					<NumericContent scale="%" value="{KPIModel>/ClickToOpenRateInPercent}" valueColor="Good"/>
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMargin tileLayout" header="{i18n>objectPage.overview.successMetrics.rateOfUniqueClick}">
+				<TileContent>
+					<NumericContent scale="%" value="{KPIModel>/UniqueClickRateInPercent}" valueColor="Good"/>
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMargin tileLayout" header="{i18n>objectPage.overview.successMetrics.bounces}">
+				<TileContent>
+					<NumericContent value="{KPIModel>/NumberOfBounces}" valueColor="Error"/>
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMargin tileLayout" header="{i18n>objectPage.overview.successMetrics.hardBounces}">
+				<TileContent>
+					<NumericContent value="{KPIModel>/NumberOfHardBounces}" valueColor="Error"/>
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMargin tileLayout" header="{i18n>objectPage.overview.successMetrics.softBounces}">
+				<TileContent >
+					<NumericContent value="{KPIModel>/NumberOfSoftBounces}" valueColor="Error"/>
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMargin tileLayout" header="{i18n>objectPage.overview.successMetrics.bounceRate}">
+				<TileContent>
+					<NumericContent scale="%" value="{KPIModel>/BounceRateInPercent}" valueColor="Error"/>
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMargin tileLayout" header="{i18n>objectPage.overview.successMetrics.missingMarketingPermissions}">
+				<TileContent>
+					<NumericContent value="{ path: 'KPIModel>/NmbrOfMisgMarketingPermissions', formatter: '.formatter.formatKPIData' }" valueColor="Error"/>
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMargin tileLayout" header="{i18n>objectPage.overview.successMetrics.missingCommunicationData}">
+				<TileContent>
+					<NumericContent value="{KPIModel>/NumberOfMissingCommData}" valueColor="Error"/>
+				</TileContent>
+			</GenericTile>
+			<GenericTile class="sapUiTinyMargin tileLayout" header="{i18n>objectPage.overview.successMetrics.limitReached}">
+				<TileContent>
+					<NumericContent value="{path: 'KPIModel>/NumberOfLimitReached', formatter: '.formatter.formatKPIData' }" valueColor="Error"/>
+				</TileContent>
+			</GenericTile>
+		</content>
+	</Panel>
+</core:FragmentDefinition>

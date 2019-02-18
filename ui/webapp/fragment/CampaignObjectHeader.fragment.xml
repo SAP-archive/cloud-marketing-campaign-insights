@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<l:VerticalLayout>
+		<FlexBox alignItems="Center" justifyContent="Start">
+			<items>
+				<core:Icon src="sap-icon://marketing-campaign" class="sapUiSmallMarginEnd" size="3rem"/>
+			</items>
+		</FlexBox>
+	</l:VerticalLayout>
+	<l:VerticalLayout class="verticalLayoutSpacing">
+		<ObjectStatus title="{i18n>id}" text="{CampaignID}"></ObjectStatus>
+		<ObjectStatus title="{i18n>status}" text="{CampaignLifecycleStatusName}"
+			state="{path :'CampaignLifecycleStatusName',formatter:'.formatter.statusColor' }"></ObjectStatus>
+	</l:VerticalLayout>
+	<l:VerticalLayout class="verticalLayoutSpacing">
+		<ObjectStatus title="{i18n>category}" text="{CampaignCategoryName}"></ObjectStatus>
+		<ObjectStatus title="{i18n>marketingArea}" text="{MarketingAreaName}"></ObjectStatus>
+	</l:VerticalLayout>
+	<l:VerticalLayout class="verticalLayoutSpacing">
+		<ObjectStatus title="{i18n>startDate}" text="{path:'CampaignStartDate', formatter: '.formatter.convertToDateTimeObject' }"></ObjectStatus>
+		<ObjectStatus title="{i18n>endDate}" text="{path:'CampaignEndDate', formatter: '.formatter.convertToDateTimeObject' }"></ObjectStatus>
+	</l:VerticalLayout>
+	<l:VerticalLayout class="verticalLayoutSpacing">
+		<ObjectStatus title="{i18n>owner}" text="{CampaignOwnerName}"></ObjectStatus>
+	</l:VerticalLayout>
+	<!--	Custom Fields can be displayed here-->
+	<l:VerticalLayout class="verticalLayoutSpacing">
+		<ObjectStatus title="Sales Revenue" text="{YY1_DR_Sales_Rev_MIN}"></ObjectStatus>
+	</l:VerticalLayout>
+</core:FragmentDefinition>

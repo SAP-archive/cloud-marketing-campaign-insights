@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" xmlns:reuseCore="mktinsights.control.preview">
+	<Panel height="30rem">
+		<Carousel id="emailCarousel" loop="true" arrowsPlacement="PageIndicator" pages="{contentModel>/value}">
+			<pages>
+				<CustomTile class="sapUiTinyMargin sapMTile designcustomTileClass" press="handleEmailContentPress">
+					<content>
+						<VBox class="designcustomTileImageContClass sapUiContentPadding">
+							<items>
+								<reuseCore:PreviewLoader controlWidth="360" controlHeight="450" previewLoaderReady="onPreviewLoaderReady"/>
+							</items>
+						</VBox>
+					</content>
+				</CustomTile>
+			</pages>
+		</Carousel>
+	</Panel>
+</core:FragmentDefinition>

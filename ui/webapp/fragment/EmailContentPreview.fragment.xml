@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:reuseCore="mktinsights.control.preview">
+	<Dialog title="{i18n>TIT_PREVIEW}" class="sapUiContentPadding" contentWidth="auto" contentHeight="auto">
+		<endButton>
+			<Button text="{i18n>BTN_CLOSE}" press="onPreviewClose"/>
+		</endButton>
+		<content>
+			<VBox>
+				<FlexBox  id="previewDataBox" alignItems="Center" justifyContent="Center" direction="Column">
+					<items>
+						<CustomTile class="sapUiTinyMargin sapMTile bigcustomTileClass">
+							<content>
+								<VBox>
+									<items>
+										<VBox class="sapUiContentPadding">
+											<items>
+												<reuseCore:PreviewLoader id="bigPreview" controlWidth="563" controlHeight="665" previewLoaderReady="onBigPreviewReady"
+													contentLoadingText="{i18n>previewContentLoadingMsg}" contentNotFoundText="{i18n>previewNoContentFoundMsg}"/>
+											</items>
+										</VBox>
+									</items>
+								</VBox>
+							</content>
+						</CustomTile>
+					</items>
+				</FlexBox>
+			</VBox>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

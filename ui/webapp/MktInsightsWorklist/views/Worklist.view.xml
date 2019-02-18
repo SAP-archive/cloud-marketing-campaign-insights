@@ -1,0 +1,25 @@
+<mvc:View controllerName="mktinsights.MktInsightsWorklist.controllers.Worklist" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form">
+	<Page id="page" showHeader="false" class="toolBarNoBorder noBorderIconTab" backgroundDesign="List" >
+		<Bar id="headerBar">
+			<contentLeft>
+				<core:Icon src="sap-icon://employee" class="sapUiSmallMarginBegin sapUiTinyMarginEnd"/>
+				<Text text="{parts: ['loginUserModel>/0/FirstName','loginUserModel>/0/LastName'], formatter: '.formatter.getFullName'}"/>
+			</contentLeft>
+			<contentMiddle>
+				<Text text="{i18n>appTitle}"/>
+			</contentMiddle>
+		</Bar>
+		<Title text="{i18n>worklistTitle}" class="sapUiMediumMarginBegin sapUiSmallMarginTop" level="H3" titleStyle="H3"/>
+		<IconTabBar id="campaignTypeIconBar" select="handleSegmentSelectionPress" class="sapUiResponsiveContentPadding" backgroundDesign="Transparent">
+			<items>
+				<IconTabFilter text="{worklistView>/worklistStatusAllTitle}" key="0" class="sapUiMediumMarginEnd" >
+				</IconTabFilter>
+				<IconTabFilter text="{worklistView>/worklistStatusInPrepTitle}" key="1" class="sapUiMediumMarginEnd"/>
+				<IconTabFilter text="{worklistView>/worklistStatusReleasedTitle}" key="2" class="sapUiMediumMarginEnd"/>
+				<IconTabFilter text="{worklistView>/worklistStatusCompletedTitle}" key="3" class="sapUiMediumMarginEnd"/>
+			</items>
+		</IconTabBar>
+	</Page>
+</mvc:View>

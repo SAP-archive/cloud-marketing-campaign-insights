@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns:html="http://www.w3.org/1999/xhtml"
+                         xmlns="sap.m"
+                         xmlns:core="sap.ui.core">
+    <Dialog title="{i18n>Mkt_Insights}">
+        <content>
+            <Text class="sapUiSmallMargin" text="{dialogModel>/body}"></Text>
+        </content>
+            <buttons>
+                <Button text="{i18n>ok}" type="Emphasized" press="handleOKPress"/>
+                <Button text="{i18n>cancel}" press="handleCancelPress"/>
+            </buttons>
+
+    </Dialog>
+</core:FragmentDefinition>

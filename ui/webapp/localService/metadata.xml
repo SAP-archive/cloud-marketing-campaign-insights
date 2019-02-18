@@ -1,0 +1,184 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+    <edmx:DataServices
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="API_MKT_INSIGHT_SRV">
+            <EntityType Name="CUAN_CAMPAIGN_METRICS_Q001Result">
+                <Key>
+                    <PropertyRef Name="CampaignUUID"/>
+                </Key>
+                <Property Name="CampaignUUID" Type="Edm.String" Nullable="true"/>
+                <Property Name="NoOfMissingMarketingPermissions" Type="Edm.Decimal" Nullable="true"/>
+                <Property Name="NoOfMissingCommunicationData" Type="Edm.Decimal" Nullable="true"/>
+                <Property Name="NoOfCommunicationLimitsReached" Type="Edm.Double" Nullable="true"/>
+                <Property Name="NoOfSentMessages" Type="Edm.Double" Nullable="true"/>
+                <Property Name="NoOfBounces" Type="Edm.Double" Nullable="true"/>
+                <Property Name="NoOfHardBounces" Type="Edm.Double" Nullable="true"/>
+                <Property Name="NoOfSoftBounces" Type="Edm.Double" Nullable="true"/>
+                <Property Name="NoOfUnopenedMessages" Type="Edm.Double" Nullable="true"/>
+                <Property Name="NoOfOpenedMessages" Type="Edm.Double" Nullable="true"/>
+                <Property Name="RateOfBounces" Type="Edm.Double" Nullable="true"/>
+                <Property Name="RateOfOpenedMessages" Type="Edm.Double" Nullable="true"/>
+                <Property Name="RateOfUniqueClicks" Type="Edm.Double" Nullable="true"/>
+                <Property Name="RateOfClicksToOpenedMessages" Type="Edm.Double" Nullable="true"/>
+                <NavigationProperty Name="campaign" Relationship="API_MKT_INSIGHT_SRV.Interactions" FromRole="ToRole_Interactions" ToRole="FromRole_Interactions"/>
+            </EntityType>
+            <EntityType Name="ContactEntityType">
+                <Key>
+                    <PropertyRef Name="ContactUUID"/>
+                </Key>
+                <Property Name="ContactUUID" Type="Edm.String" Nullable="true"/>
+                <Property Name="FullName" Type="Edm.String" Nullable="true"/>
+                <Property Name="EmailAddress" Type="Edm.String" Nullable="true"/>
+                <Property Name="PhoneNumber" Type="Edm.String" Nullable="true"/>
+                <Property Name="CorporateAccountName" Type="Edm.String" Nullable="true"/>
+                <Property Name="SalesRepresentativeTeamMemberID" Type="Edm.String" Nullable="true"/>
+                <Property Name="SalesRepresentativeFullName" Type="Edm.String" Nullable="true"/>
+            </EntityType>
+            <EntityType Name="CampaignEntityType">
+                <Key>
+                    <PropertyRef Name="CampaignUUID"/>
+                </Key>
+                <Property Name="CampaignUUID" Type="Edm.String" Nullable="false"/>
+                <Property Name="CampaignID" Type="Edm.String" Nullable="true"/>
+                <Property Name="CampaignName" Type="Edm.String" Nullable="true"/>
+                <Property Name="CampaignExecutionFrqcyInterval" Type="Edm.String" Nullable="true"/>
+                <Property Name="CampaignLifecycleStatusName" Type="Edm.String" Nullable="true"/>
+                <Property Name="CampaignDescription" Type="Edm.String" Nullable="true"/>
+                <Property Name="CampaignStartDate" Type="Edm.DateTimeOffset" Nullable="true"/>
+                <Property Name="CampaignEndDate" Type="Edm.DateTimeOffset" Nullable="true"/>
+                <Property Name="CampaignOwnerName" Type="Edm.String" Nullable="true"/>
+                <Property Name="CampaignCategoryName" Type="Edm.String" Nullable="true"/>
+                <Property Name="MarketingAreaName" Type="Edm.String" Nullable="true"/>
+                <NavigationProperty Name="CampaignAssignedTeamMembers" Relationship="API_MKT_INSIGHT_SRV.CampaignTeamMembers" FromRole="FromRole_CampaignTeamMembers" ToRole="ToRole_CampaignTeamMembers"/>
+                <NavigationProperty Name="Contacts" Relationship="API_MKT_INSIGHT_SRV.CampaignEntityType_2_r_Contacts" FromRole="CampaignEntityType" ToRole="r_Contacts"/>
+                <NavigationProperty Name="InteractionResults" Relationship="API_MKT_INSIGHT_SRV.Interactions" FromRole="FromRole_Interactions" ToRole="ToRole_Interactions"/>
+                <NavigationProperty Name="InteractionContacts" Relationship="API_MKT_INSIGHT_SRV.InteractionContacts" FromRole="FromRole_InteractionContacts" ToRole="ToRole_InteractionContacts"/>
+            </EntityType>
+            <EntityType Name="TaskNoteEntityType">
+                <Key>
+                    <PropertyRef Name="ObjectID"/>
+                </Key>
+                <Property Name="ObjectID" Type="Edm.String" Nullable="true"/>
+                <Property Name="Text" Type="Edm.String" Nullable="true"/>
+                <Property Name="TypeCode" Type="Edm.String" Nullable="true"/>
+            </EntityType>
+            <EntityType Name="CampaignAssignedTargetGroupEntityType">
+                <Key>
+                    <PropertyRef Name="CampaignUUID"/>
+                    <PropertyRef Name="TargetGroupUUID"/>
+                </Key>
+                <Property Name="CampaignUUID" Type="Edm.String" Nullable="false"/>
+                <Property Name="TargetGroupUUID" Type="Edm.String" Nullable="false"/>
+                <Property Name="TargetGroup" Type="Edm.String" Nullable="true"/>
+            </EntityType>
+            <EntityType Name="AccountTeamMemberEntityType">
+                <Key>
+                    <PropertyRef Name="TeamMemberUUID"/>
+                </Key>
+                <Property Name="TeamMemberUUID" Type="Edm.String" Nullable="true"/>
+                <Property Name="ContactUUID" Type="Edm.String" Nullable="true"/>
+                <Property Name="TeamMemberID" Type="Edm.String" Nullable="true"/>
+                <Property Name="Role" Type="Edm.String" Nullable="true"/>
+            </EntityType>
+            <EntityType Name="EmployeeEntityType">
+                <Key>
+                    <PropertyRef Name="UUID"/>
+                </Key>
+                <Property Name="UUID" Type="Edm.String" Nullable="true"/>
+            </EntityType>
+            <EntityType Name="CampaignByTeamMemberEntityType">
+                <Key>
+                    <PropertyRef Name="CampaignUUID"/>
+                </Key>
+                <Property Name="CampaignUUID" Type="Edm.String" Nullable="true"/>
+                <Property Name="CampaignID" Type="Edm.String" Nullable="true"/>
+                <Property Name="CampaignName" Type="Edm.String" Nullable="true"/>
+                <Property Name="CampaignTeamMember" Type="Edm.String" Nullable="true"/>
+                <Property Name="CampaignExecutionFrqcyInterval" Type="Edm.String" Nullable="true"/>
+                <Property Name="CampaignLifecycleStatusName" Type="Edm.String" Nullable="true"/>
+                <Property Name="CampaignDescription" Type="Edm.String" Nullable="true"/>
+                <Property Name="CampaignStartDate" Type="Edm.DateTimeOffset" Nullable="true"/>
+                <Property Name="CampaignEndDate" Type="Edm.DateTimeOffset" Nullable="true"/>
+                <Property Name="CampaignOwnerName" Type="Edm.String" Nullable="true"/>
+                <Property Name="CampaignCategoryName" Type="Edm.String" Nullable="true"/>
+                <Property Name="MarketingAreaName" Type="Edm.String" Nullable="true"/>
+            </EntityType>
+            <EntityType Name="TaskEntityType">
+                <Key>
+                    <PropertyRef Name="ObjectID"/>
+                </Key>
+                <Property Name="ObjectID" Type="Edm.String" Nullable="true"/>
+                <Property Name="Subject" Type="Edm.String" Nullable="true"/>
+                <Property Name="ProcessorUUID" Type="Edm.String" Nullable="true"/>
+                <Property Name="Text" Type="Edm.String" Nullable="true"/>
+            </EntityType>
+            <EntityType Name="TeamMemberEntityType">
+                <Key>
+                    <PropertyRef Name="TeamMemberName"/>
+                    <PropertyRef Name="CampaignUUID"/>
+                </Key>
+                <Property Name="TeamMemberName" Type="Edm.String" Nullable="true"/>
+                <Property Name="CampaignUUID" Type="Edm.String" Nullable="false"/>
+                <Property Name="FullName" Type="Edm.String" Nullable="true"/>
+                <Property Name="PhoneNumber" Type="Edm.String" Nullable="true"/>
+                <Property Name="EmailAddress" Type="Edm.String" Nullable="true"/>
+                <NavigationProperty Name="campaign" Relationship="API_MKT_INSIGHT_SRV.CampaignTeamMembers" FromRole="ToRole_CampaignTeamMembers" ToRole="FromRole_CampaignTeamMembers"/>
+            </EntityType>
+            <EntityType Name="InteractionContact" BaseType="API_MKT_INSIGHT_SRV.ContactEntityType">
+                <Key>
+                    <PropertyRef Name="InteractionContactUUID"/>
+                </Key>
+                <Property Name="InteractionContactUUID" Type="Edm.String" Nullable="true"/>
+                <Property Name="InteractionType" Type="Edm.String" Nullable="true"/>
+                <NavigationProperty Name="campaign" Relationship="API_MKT_INSIGHT_SRV.InteractionContacts" FromRole="ToRole_InteractionContacts" ToRole="FromRole_InteractionContacts"/>
+            </EntityType>
+            <Association Name="InteractionContacts">
+                <End Type="API_MKT_INSIGHT_SRV.CampaignEntityType" Multiplicity="1" Role="FromRole_InteractionContacts"/>
+                <End Type="API_MKT_INSIGHT_SRV.InteractionContact" Multiplicity="*" Role="ToRole_InteractionContacts"/>
+            </Association>
+            <Association Name="Interactions">
+                <End Type="API_MKT_INSIGHT_SRV.CUAN_CAMPAIGN_METRICS_Q001Result" Multiplicity="*" Role="ToRole_Interactions"/>
+                <End Type="API_MKT_INSIGHT_SRV.CampaignEntityType" Multiplicity="1" Role="FromRole_Interactions"/>
+            </Association>
+            <Association Name="CampaignEntityType_2_r_Contacts">
+                <End Type="API_MKT_INSIGHT_SRV.CampaignEntityType" Multiplicity="1" Role="CampaignEntityType"/>
+                <End Type="API_MKT_INSIGHT_SRV.ContactEntityType" Multiplicity="*" Role="r_Contacts"/>
+            </Association>
+            <Association Name="CampaignTeamMembers">
+                <End Type="API_MKT_INSIGHT_SRV.CampaignEntityType" Multiplicity="1" Role="FromRole_CampaignTeamMembers"/>
+                <End Type="API_MKT_INSIGHT_SRV.TeamMemberEntityType" Multiplicity="*" Role="ToRole_CampaignTeamMembers"/>
+            </Association>
+            <EntityContainer Name="API_MKT_INSIGHT_SRV_Entities" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="CUAN_CAMPAIGN_METRICS_Q001Results" EntityType="API_MKT_INSIGHT_SRV.CUAN_CAMPAIGN_METRICS_Q001Result"/>
+                <EntitySet Name="Contacts" EntityType="API_MKT_INSIGHT_SRV.ContactEntityType"/>
+                <EntitySet Name="Campaigns" EntityType="API_MKT_INSIGHT_SRV.CampaignEntityType"/>
+                <EntitySet Name="TaskNotes" EntityType="API_MKT_INSIGHT_SRV.TaskNoteEntityType"/>
+                <EntitySet Name="CampaignAssignedTargetGroups" EntityType="API_MKT_INSIGHT_SRV.CampaignAssignedTargetGroupEntityType"/>
+                <EntitySet Name="AccountTeamMembers" EntityType="API_MKT_INSIGHT_SRV.AccountTeamMemberEntityType"/>
+                <EntitySet Name="EmployeeCollection" EntityType="API_MKT_INSIGHT_SRV.EmployeeEntityType"/>
+                <EntitySet Name="CampaignsByTeamMember" EntityType="API_MKT_INSIGHT_SRV.CampaignByTeamMemberEntityType"/>
+                <EntitySet Name="TaskCollection" EntityType="API_MKT_INSIGHT_SRV.TaskEntityType"/>
+                <EntitySet Name="TeamMembers" EntityType="API_MKT_INSIGHT_SRV.TeamMemberEntityType"/>
+                <EntitySet Name="InteractionContacts" EntityType="API_MKT_INSIGHT_SRV.InteractionContact"/>
+                <AssociationSet Name="InteractionContacts" Association="API_MKT_INSIGHT_SRV.InteractionContacts">
+                    <End EntitySet="Campaigns" Role="FromRole_InteractionContacts"/>
+                    <End EntitySet="InteractionContacts" Role="ToRole_InteractionContacts"/>
+                </AssociationSet>
+                <AssociationSet Name="Interactions" Association="API_MKT_INSIGHT_SRV.Interactions">
+                    <End EntitySet="CUAN_CAMPAIGN_METRICS_Q001Results" Role="ToRole_Interactions"/>
+                    <End EntitySet="Campaigns" Role="FromRole_Interactions"/>
+                </AssociationSet>
+                <AssociationSet Name="CampaignEntityType_2_r_Contacts" Association="API_MKT_INSIGHT_SRV.CampaignEntityType_2_r_Contacts">
+                    <End EntitySet="Campaigns" Role="CampaignEntityType"/>
+                    <End EntitySet="Contacts" Role="r_Contacts"/>
+                </AssociationSet>
+                <AssociationSet Name="CampaignTeamMembers" Association="API_MKT_INSIGHT_SRV.CampaignTeamMembers">
+                    <End EntitySet="Campaigns" Role="FromRole_CampaignTeamMembers"/>
+                    <End EntitySet="TeamMembers" Role="ToRole_CampaignTeamMembers"/>
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

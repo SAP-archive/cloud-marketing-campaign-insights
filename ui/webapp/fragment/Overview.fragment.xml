@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<l:BlockLayout class="sapUiNoContentPadding blockLayoutSpacing" background="Dashboard">
+		<l:BlockLayoutRow>
+			<l:BlockLayoutCell id="emailContentDashboard" class="sapUiNoContentPadding" width="1">
+				<Toolbar>
+					<ObjectIdentifier class="sapUiSmallMarginBegin" title="{i18n>objectPage.overview.campaignContent}"/>
+				</Toolbar>
+			</l:BlockLayoutCell>
+			<l:BlockLayoutCell id="kpiDashboard" class="sapUiNoContentPadding" width="2">
+				<Toolbar>
+					<ObjectIdentifier class="sapUiSmallMarginBegin" title="{i18n>objectPage.overview.successMetrics}"/>
+					<ToolbarSpacer/>
+					<SegmentedButton id="segBtn" class="sapUiMediumMargin" selectedKey="chartView">
+						<items>
+							<SegmentedButtonItem id="chartView_button" icon="sap-icon://bar-chart"
+								tooltip="{i18n>objectPage.overview.successMetrics.barChartBtnTooltip}" key="chartView" press="onPressOfChartView"/>
+							<SegmentedButtonItem id="tileView_button" icon="sap-icon://grid" tooltip="{i18n>worklist.gridBtnTooltip}" key="tileView"
+								press="onPressOfTileView"/>
+						</items>
+					</SegmentedButton>
+				</Toolbar>
+				<ScrollContainer id="scrollCont_KPIDashboard"></ScrollContainer>
+			</l:BlockLayoutCell>
+		</l:BlockLayoutRow>
+	</l:BlockLayout>
+</core:FragmentDefinition>

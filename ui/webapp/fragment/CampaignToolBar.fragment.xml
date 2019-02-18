@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<Toolbar>
+		<ToolbarSpacer/>
+		<SearchField id="searchField" width="20%" search="onSearch" placeholder="{i18n>worklist.searchById}" enableSuggestions="true"
+			suggest="onCampaignSearchSuggest" suggestionItems="{ path: '/CampaignsByTeamMember' }">
+			<suggestionItems>
+				<SuggestionItem text="{CampaignID}" key="{CampaignUUID}"/>
+			</suggestionItems>
+		</SearchField>
+		<SegmentedButton id="segBtn" selectedKey="gridView">
+			<items>
+				<SegmentedButtonItem id="grid_view" icon="sap-icon://grid" key="gridView" tooltip="{i18n>worklist.gridBtnTooltip}" press="onViewChange"/>
+				<SegmentedButtonItem id="list_view" icon="sap-icon://group-2" key="listView" tooltip="{i18n>worklist.groupBtnTooltip}" press="onViewChange"/>
+			</items>
+		</SegmentedButton>
+		<Button id="export_excel" icon="sap-icon://excel-attachment" press="onExport" tooltip="{i18n>ExportToExcel}"
+			visible="{worklistView>/displayGroupItemView}"/>
+	</Toolbar>
+</core:FragmentDefinition>
